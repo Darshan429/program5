@@ -27,6 +27,14 @@ pipeline {
                 archiveArtifacts artifacts: 'target/*.war', fingerprint:true
             }
         }
+
+    stage('Debug') {
+    steps {
+        sh 'pwd'
+        sh 'find . -name "*.war"'
+        sh 'ls -l target'
+        }
+    }
         stage('Deploy') {
             steps {
                sh 'mvn clean package'  
